@@ -47,7 +47,7 @@ Se adopta ASP.NET Core Web API como framework principal del backend, fundamentad
 | Formato de respuesta | JSON |
 | ORM de acceso a datos | Entity Framework Core |
 | Patron arquitectonico interno | Clean Architecture |
-| Autenticacion | JWT (JSON Web Tokens) — alineado con ADR-001 |
+| Autenticacion | JWT (JSON Web Tokens) — alineado con ADR-004 |
 | Plataforma de despliegue | Multiplataforma (Windows, Linux, Docker) |
 | Ciclo de soporte | Microsoft LTS (soporte a largo plazo) |
 
@@ -72,7 +72,7 @@ La dependencia siempre apunta hacia adentro: Presentation depende de Application
 
 ## 5. Justificacion de la Decision
 
-La eleccion de ASP.NET Core Web API se fundamenta en su madurez tecnologica, alto rendimiento y el respaldo oficial de Microsoft a largo plazo, lo que asegura estabilidad y una amplia comunidad de desarrollo. Su integracion nativa con mecanismos de autenticacion como JWT refuerza la proteccion del backend, alineandose directamente con la estrategia de seguridad definida en ADR-001.
+La eleccion de ASP.NET Core Web API se fundamenta en su madurez tecnologica, alto rendimiento y el respaldo oficial de Microsoft a largo plazo, lo que asegura estabilidad y una amplia comunidad de desarrollo. Su integracion nativa con mecanismos de autenticacion como JWT refuerza la proteccion del backend, alineandose directamente con la estrategia de seguridad definida en ADR-004.
 
 La incorporacion de Entity Framework Core como ORM agrega una capa de seguridad y simplicidad en el acceso a los datos. Al abstraer las consultas mediante objetos tipados y proteger contra vulnerabilidades como la inyeccion SQL, se garantiza que la interaccion con la base de datos sea confiable y mantenible, eliminando la necesidad de queries SQL crudas en el codigo.
 
@@ -134,7 +134,7 @@ Los microservicios implican orquestacion de multiples servicios, comunicacion po
 | Contratos mediante interfaces | Los repositorios y servicios externos se definen como interfaces en la capa Application y se implementan en Infrastructure. |
 | DTOs en la capa de presentacion | Las entidades del dominio nunca se exponen directamente en la API. Se utilizan DTOs para mapear la respuesta, evitando fugas de informacion. |
 | Validacion en la capa de entrada | Toda entrada de datos es validada antes de llegar a la logica de negocio, previniendo inconsistencias desde el origen. |
-| Alineacion con ADR-001 (seguridad) | El uso de EF Core elimina el riesgo de inyeccion SQL. JWT como mecanismo de autenticacion cumple con la Capa 1 de seguridad definida en ADR-001. |
+| Alineacion con ADR-004 (seguridad) | El uso de EF Core elimina el riesgo de inyeccion SQL. JWT como mecanismo de autenticacion cumple con la Capa 1 de seguridad definida en ADR-004. |
 
 ---
 
