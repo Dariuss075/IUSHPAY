@@ -9,7 +9,7 @@ Seleccion de estilo arquitectonico para el backend de IUSHPay
 | Identificador | ADR-001 |
 | Titulo | Arquitectura del Sistema IUSHPay |
 | Estado | Aprobado |
-| Fecha | Abril 2025 |
+| Fecha | Abril 2026 |
 | Autores | Equipo de Arquitectura |
 | Sistema | IUSHPay — Institucion Universitaria Salazar y Herrera |
 
