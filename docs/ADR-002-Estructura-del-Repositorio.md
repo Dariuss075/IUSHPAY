@@ -9,7 +9,7 @@ Organizacion del codigo fuente del repositorio IUSHPay
 | Identificador | ADR-002 |
 | Titulo | Estructura Interna del Repositorio |
 | Estado | Aprobado |
-| Fecha | Abril 2025 |
+| Fecha | Abril 2026 |
 | Autores | Equipo de Arquitectura |
 | Depende de | ADR-001 — Arquitectura del Sistema IUSHPay |
 
