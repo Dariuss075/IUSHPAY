@@ -9,7 +9,7 @@ Seleccion del stack tecnico y patron arquitectonico interno del backend IUSHPay
 | Identificador | ADR-003 |
 | Titulo | Arquitectura y Tecnologia del Backend |
 | Estado | Aprobado |
-| Fecha | Abril 2025 |
+| Fecha | Abril 2026 |
 | Autores | Equipo de Desarrollo Backend — IUSHPay |
 | Depende de | ADR-001 — Arquitectura del Sistema IUSHPay |
 
