@@ -1,4 +1,4 @@
-# ADR-002: Estructura Interna del Repositorio
+# ADR-005: Estructura Interna del Repositorio
 
 Organizacion del codigo fuente del repositorio IUSHPay
 
@@ -6,20 +6,20 @@ Organizacion del codigo fuente del repositorio IUSHPay
 
 | Campo | Detalle |
 |---|---|
-| Identificador | ADR-002 |
+| Identificador | ADR-005 |
 | Titulo | Estructura Interna del Repositorio |
 | Estado | Aprobado |
 | Fecha | Abril 2026 |
 | Autores | Equipo de Arquitectura |
-| Depende de | ADR-001 — Arquitectura del Sistema IUSHPay |
+| Depende de | ADR-003 — Adopción de Arquitectura Modular |
 
 ---
 
 ## 1. Contexto
 
-Una vez definida la arquitectura de Monolito Modular para IUSHPay (ADR-001), es necesario establecer como se organiza fisicamente el codigo fuente dentro del repositorio. Sin una estructura acordada, los equipos tienden a ubicar archivos de forma inconsistente, generar conflictos de merge frecuentes y dificultar la navegacion del codigo por parte de nuevos integrantes.
+Una vez definida la arquitectura de Monolito Modular para IUSHPay (ADR-003), es necesario establecer como se organiza fisicamente el codigo fuente dentro del repositorio. Sin una estructura acordada, los equipos tienden a ubicar archivos de forma inconsistente, generar conflictos de merge frecuentes y dificultar la navegacion del codigo por parte de nuevos integrantes.
 
-Definir estas decisiones de forma explicita reduce la friccion operativa y establece una base comun para el trabajo colaborativo. La estructura debe reflejar directamente los modulos definidos en el ADR-001, de modo que cualquier desarrollador pueda inferir la ubicacion de un archivo a partir de su responsabilidad funcional.
+Definir estas decisiones de forma explicita reduce la friccion operativa y establece una base comun para el trabajo colaborativo. La estructura debe reflejar directamente los modulos definidos en el ADR-003, de modo que cualquier desarrollador pueda inferir la ubicacion de un archivo a partir de su responsabilidad funcional.
 
 ---
 
@@ -40,7 +40,7 @@ Se adopta una estructura de carpetas que refleja directamente los modulos defini
 | `src/Shared` | Elementos transversales: contratos compartidos, utilidades, excepciones base y constantes. |
 | `tests/Unit` | Pruebas unitarias organizadas por modulo, sin dependencia de infraestructura externa. |
 | `tests/Integration` | Pruebas de integracion que validan la interaccion entre modulos y la base de datos. |
-| `docs/adr` | Registro de decisiones de arquitectura (ADR-001, ADR-002 y ADR-003). |
+| `docs/adr` | Registro de decisiones de arquitectura (ADR-003, ADR-005 y ADR-004). |
 | `.github/workflows` | Pipelines de integracion continua: build, pruebas automatizadas y analisis de calidad. |
 
 ---
@@ -50,7 +50,7 @@ Se adopta una estructura de carpetas que refleja directamente los modulos defini
 | Alternativa | Descripcion | Razon del descarte |
 |---|---|---|
 | Estructura por capa global | Una carpeta Controllers, una carpeta Services y una carpeta Repositories para toda la aplicacion. | A medida que el sistema crece, los archivos de distintos modulos se mezclan en las mismas carpetas, dificultando la navegacion y el mantenimiento. |
-| Estructura plana sin modulos | Todos los archivos en una sola carpeta raiz organizada por tipo de clase. | Genera confusion en equipos con multiples integrantes y no refleja la arquitectura modular definida en ADR-001. |
+| Estructura plana sin modulos | Todos los archivos en una sola carpeta raiz organizada por tipo de clase. | Genera confusion en equipos con multiples integrantes y no refleja la arquitectura modular definida en ADR-003. |
 
 ---
 
@@ -58,7 +58,7 @@ Se adopta una estructura de carpetas que refleja directamente los modulos defini
 
 | Practica | Aplicacion en IUSHPay |
 |---|---|
-| Coherencia entre arquitectura y estructura | La organizacion de carpetas refleja directamente los modulos del ADR-001, facilitando la navegacion y la comprension del sistema. |
+| Coherencia entre arquitectura y estructura | La organizacion de carpetas refleja directamente los modulos del ADR-003, facilitando la navegacion y la comprension del sistema. |
 | Un modulo, una carpeta | Cada modulo del sistema tiene su propio espacio en el repositorio, evitando que logicas distintas compartan el mismo directorio. |
 | Documentacion versionada | Los ADRs, diagramas y decisiones tecnicas se versionan junto con el codigo en la carpeta docs/adr. |
 | Pruebas separadas por tipo | Las pruebas unitarias y de integracion se ubican en directorios distintos, con estructura interna espejo de los modulos. |
