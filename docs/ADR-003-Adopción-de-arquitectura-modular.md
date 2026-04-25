@@ -1,4 +1,4 @@
-# ADR-001: Arquitectura del Sistema IUSHPay
+# ADR-003: Adopción de arquitectura modular.
 
 Seleccion de estilo arquitectonico para el backend de IUSHPay
 
@@ -6,7 +6,7 @@ Seleccion de estilo arquitectonico para el backend de IUSHPay
 
 | Campo | Detalle |
 |---|---|
-| Identificador | ADR-001 |
+| Identificador | ADR-003 |
 | Titulo | Arquitectura del Sistema IUSHPay |
 | Estado | Aprobado |
 | Fecha | Abril 2026 |
