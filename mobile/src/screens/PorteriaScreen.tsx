@@ -3,9 +3,8 @@
 // Usa expo-camera para acceder a la cámara sin app nativa.
 
 import React, { useState, useRef, useCallback } from 'react';
-import {
-  View, Text, StyleSheet, SafeAreaView, TouchableOpacity,
-} from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { CameraView, useCameraPermissions } from 'expo-camera';
 import GuardResult from '../components/GuardResult';
 import { validateQR, ValidateQRResponse } from '../api/qrApi';
@@ -65,7 +64,7 @@ export default function PorteriaScreen() {
         {/* Header */}
         <View style={styles.header}>
           <Text style={styles.title}>Control de Acceso</Text>
-          <Text style={styles.subtitle}>North Garage · Portería</Text>
+          <Text style={styles.subtitle}>Garaje · Portería</Text>
         </View>
 
         {/* Scanner */}
