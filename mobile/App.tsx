@@ -1,56 +1,61 @@
-// App.tsx
-// Navegación raíz — dos tabs: Estudiante y Portería.
-// En producción P1 maneja el auth y solo muestra la tab correcta según el rol.
-
-import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Text } from 'react-native';
+import React, { useState } from 'react';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import LoginScreen from './src/screens/LoginScreen';
 import DashboardScreen from './src/screens/DashboardScreen';
+import QRScreen from './src/screens/QRScreen';
 import PorteriaScreen from './src/screens/PorteriaScreen';
-import { colors, fontSize } from './src/theme';
+import WalletScreen from './src/screens/WalletScreen';
+import HistoryScreen from './src/screens/HistoryScreen';
+import { useSessionStore } from './src/store/useSessionStore';
 
-const Tab = createBottomTabNavigator();
+type Screen = 'login' | 'home' | 'qr' | 'wallet' | 'history';
+
+function AppContent() {
+  const [screen, setScreen] = useState<Screen>('login');
+  const role = useSessionStore(state => state.role);
+
+  if (screen === 'login') {
+    return <LoginScreen onLoginSuccess={() => setScreen('home')} />;
+  }
+
+  if (screen === 'home' && role === 'Admin') {
+    return (
+      <PorteriaScreen onBack={() => {
+        useSessionStore.getState().clearSession();
+        setScreen('login');
+      }} />
+    );
+  }
+
+  if (screen === 'home') {
+    return (
+      <DashboardScreen
+        onNavigateToQR={() => setScreen('qr')}
+        onNavigateToWallet={() => setScreen('wallet')}
+        onNavigateToHistory={() => setScreen('history')}
+      />
+    );
+  }
+
+  if (screen === 'qr') {
+    return <QRScreen onBack={() => setScreen('home')} />;
+  }
+
+  if (screen === 'wallet') {
+    return <WalletScreen onBack={() => setScreen('home')} />;
+  }
+
+  if (screen === 'history') {
+    return <HistoryScreen onBack={() => setScreen('home')} />;
+  }
+
+  return null;
+}
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <Tab.Navigator
-        screenOptions={{
-          headerShown: false,
-          tabBarStyle: {
-  	    backgroundColor: '#1A1A2E',
-            borderTopColor: '#2D2D4E',
-            borderTopWidth: 1,
-            position: 'absolute',
-          },
-          tabBarActiveTintColor: colors.purple,
-          tabBarInactiveTintColor: colors.textMuted,
-          tabBarLabelStyle: {
-            fontSize: fontSize.xs,
-            fontWeight: '600',
-          },
-        }}
-      >
-        <Tab.Screen
-          name="QR Acceso"
-          component={DashboardScreen}
-          options={{
-            tabBarIcon: ({ color }) => (
-              <Text style={{ fontSize: 20, color }}>📱</Text>
-            ),
-          }}
-        />
-        <Tab.Screen
-          name="Portería"
-          component={PorteriaScreen}
-          options={{
-            tabBarIcon: ({ color }) => (
-              <Text style={{ fontSize: 20, color }}>🔍</Text>
-            ),
-          }}
-        />
-      </Tab.Navigator>
-    </NavigationContainer>
+    <SafeAreaProvider>
+      <AppContent />
+    </SafeAreaProvider>
   );
 }

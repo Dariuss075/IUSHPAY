@@ -1,22 +1,25 @@
 // src/theme.ts
-// Tokens de diseño — basados en el prototipo VIBRANTE del proyecto.
-// Cambiar aquí afecta toda la app.
+// Paleta de colores institucional — IUSH (Institución Universitaria Salazar y Herrera)
 
 export const colors = {
-  // Primarios
-  purple:        '#7C3AED',
-  purpleLight:   '#A78BFA',
-  purpleDark:    '#5B21B6',
+  // Primarios IUSH
+  primary:       '#1B2A6B',   // Azul institucional
+  primaryLight:  '#2E4099',   // Azul claro
+  primaryDark:   '#111B47',   // Azul oscuro
 
-  // Fondo
-  bgDark:        '#0F0F1A',
-  bgCard:        '#1A1A2E',
-  bgCardBorder:  '#2D2D4E',
+  // Secundario IUSH
+  secondary:     '#C0272D',   // Rojo institucional
+  secondaryLight:'#E03A40',   // Rojo claro
+
+  // Fondos
+  bgDark:        '#0F1119',
+  bgCard:        '#1A2035',
+  bgCardBorder:  '#2A3050',
 
   // Texto
   textPrimary:   '#FFFFFF',
-  textSecondary: '#9CA3AF',
-  textMuted:     '#6B7280',
+  textSecondary: '#A0AABF',
+  textMuted:     '#6B7A9A',
 
   // Estados
   success:       '#22C55E',
@@ -26,6 +29,11 @@ export const colors = {
   errorBg:       '#FEF2F2',
   errorBorder:   '#EF4444',
   warning:       '#F59E0B',
+
+  // Aliases para compatibilidad con código existente
+  purple:        '#1B2A6B',
+  purpleLight:   '#2E4099',
+  purpleDark:    '#111B47',
 };
 
 export const spacing = {
