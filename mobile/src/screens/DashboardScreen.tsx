@@ -2,21 +2,25 @@
 // Vista del estudiante — muestra el QR de acceso.
 
 import React from 'react';
-import {
-  View, Text, StyleSheet, SafeAreaView, ScrollView,
-} from 'react-native';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import QRDisplay from '../components/QRDisplay';
 import { useSessionStore } from '../store/useSessionStore';
 import { colors, spacing, fontSize, radius } from '../theme';
 
 export default function DashboardScreen() {
   const { userId, userName } = useSessionStore();
+  const insets = useSafeAreaInsets();
 
   if (!userId) return null;
 
   return (
     <SafeAreaView style={styles.safe}>
-      <ScrollView contentContainerStyle={styles.scroll} bounces={false}>
+      <ScrollView
+  contentContainerStyle={[styles.scroll, { paddingBottom: insets.bottom + 40 }]}
+  bounces={false}
+  showsVerticalScrollIndicator={false}
+>
 
         {/* Header */}
         <View style={styles.header}>
@@ -30,7 +34,7 @@ export default function DashboardScreen() {
         </View>
 
         {/* Saludo */}
-        <Text style={styles.greeting}>Hola, {userName?.split(' ')[0]} 👋</Text>
+        <Text style={styles.greeting}>Hola, {userName?.split(' ')[0]}</Text>
 
         {/* QR */}
         <View style={styles.qrSection}>
@@ -44,7 +48,7 @@ export default function DashboardScreen() {
         {/* Info */}
         <View style={styles.infoCard}>
           <Text style={styles.infoText}>
-            🔒 El QR expira en 60 segundos y se regenera automáticamente.
+            El QR expira en 60 segundos y se regenera automáticamente.
             Es único e intransferible.
           </Text>
         </View>
@@ -61,6 +65,7 @@ const styles = StyleSheet.create({
   },
   scroll: {
     padding: spacing.lg,
+    paddingBottom: spacing.xxl + 20,
     gap: spacing.lg,
     alignItems: 'center',
   },
