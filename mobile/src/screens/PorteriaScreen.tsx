@@ -16,7 +16,11 @@ type Phase =
   | { name: 'result'; result: ValidateQRResponse }
   | { name: 'error'; message: string };
 
-export default function PorteriaScreen() {
+interface Props {
+  onBack?: () => void;
+}
+
+export default function PorteriaScreen({ onBack }: Props) {
   const [permission, requestPermission] = useCameraPermissions();
   const [phase, setPhase] = useState<Phase>({ name: 'scanning' });
   const isProcessing = useRef(false);
@@ -65,6 +69,13 @@ export default function PorteriaScreen() {
         <View style={styles.header}>
           <Text style={styles.title}>Control de Acceso</Text>
           <Text style={styles.subtitle}>Garaje · Portería</Text>
+          {onBack && (
+            <TouchableOpacity onPress={onBack} style={{ marginTop: 8 }}>
+              <Text style={{ color: colors.purpleLight, fontSize: fontSize.sm }}>
+                Cerrar sesión
+              </Text>
+            </TouchableOpacity>
+          )}
         </View>
 
         {/* Scanner */}
