@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="IUSHPAY.Domain/IUSHPAY.Domain.csproj" />
+  <Project Path="IUSHPAY.Application/IUSHPAY.Application.csproj" />
+  <Project Path="IUSHPAY.Infrastructure/IUSHPAY.Infrastructure.csproj" />
+  <Project Path="IUSHPAY.WebAPI/IUSHPAY.WebAPI.csproj" />
+</Solution>
